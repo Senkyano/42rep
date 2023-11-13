@@ -36,7 +36,7 @@ CC = cc
 NAME = libft.a
 OBJS = ${SRCS:.c=.o}
 FLAGS = -Wall -Werror -Wextra
-INCLUDE = ./libft.h
+INCLUDE = includes
 
 all : ${NAME}
 
