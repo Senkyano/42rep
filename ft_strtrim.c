@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 07:42:43 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/13 18:06:00 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/11/13 18:41:51 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*new;
 	
 	start = 0;
-	end = ft_strlen(s1) + 1;
+	end = ft_strlen(s1) - 1;
 	while (ft_diffletter(s1[start], set) == 1)
 		start++;
 	while (ft_diffletter(s1[end], set) == 1)
 		end--;
-	new = ft_substr(s1, start, end);
+	new = ft_substr(s1, start, end - start + 1);
 	return (new);
 }
