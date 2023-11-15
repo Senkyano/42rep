@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 07:43:24 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/14 09:26:57 by rihoy            ###   ########.fr       */
+/*   Created: 2023/11/14 12:47:36 by rihoy             #+#    #+#             */
+/*   Updated: 2023/11/15 08:04:51 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstlast(t_list *lst)
 {
-	char	*dest;
-	size_t	i;
+	t_list	*cur;
 
-	i = 0;
-	if (ft_strlen(s) < start)
-	{
-		dest = malloc(1);
-		if (!dest)
-			return (NULL);
-		dest[0] = '\0';
-		return (dest);
-	}
-	if (ft_strlen(s) - start < len)
-		len = ft_strlen(s) - start;
-	dest = malloc(sizeof(char) * (len + 1));
-	if (!dest)
+	if (lst == NULL)
 		return (NULL);
-	while (s[start + i] != '\0' && i < len)
-	{
-		dest[i] = s[start + i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
+	cur = lst;
+	while (cur->next != NULL)
+		cur = cur->next;
+	return (cur);
 }

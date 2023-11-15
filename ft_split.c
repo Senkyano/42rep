@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 07:40:37 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/14 09:01:30 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/11/14 09:23:43 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	count_word(char const *s, char c)
 {
 	int	nbrword;
 	int	in;
-	
+
 	nbrword = 0;
 	in = 0;
 	while (*s != '\0')
@@ -37,9 +37,8 @@ char	*ft_word(char const *s, int start, int end)
 {
 	char	*word;
 	int		i;
-	
-	if (!(word = malloc(((end - start) + 1) * sizeof(char))))
-		return (0);
+
+	word = malloc(((end - start) + 1) * sizeof(char));
 	i = 0;
 	while (start < end)
 		word[i++] = s[start++];
@@ -54,7 +53,8 @@ char	**ft_split(char const *s, char c)
 	size_t	j;
 	int		start;
 
-	if (!s || !(sent = malloc((count_word(s, c) + 1) * sizeof(char *))))
+	sent = malloc((count_word(s, c) + 1) * sizeof(char *));
+	if (!s || !sent)
 		return (0);
 	i = 0;
 	start = -1;

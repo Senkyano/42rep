@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 07:43:24 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/14 09:26:57 by rihoy            ###   ########.fr       */
+/*   Created: 2023/11/14 12:15:48 by rihoy             #+#    #+#             */
+/*   Updated: 2023/11/15 08:04:40 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	ft_lstsize(t_list *lst)
 {
-	char	*dest;
-	size_t	i;
+	int		i;
+	t_list	*cur;
 
 	i = 0;
-	if (ft_strlen(s) < start)
+	cur = lst;
+	if (!lst)
+		return (i);
+	while (cur != NULL)
 	{
-		dest = malloc(1);
-		if (!dest)
-			return (NULL);
-		dest[0] = '\0';
-		return (dest);
-	}
-	if (ft_strlen(s) - start < len)
-		len = ft_strlen(s) - start;
-	dest = malloc(sizeof(char) * (len + 1));
-	if (!dest)
-		return (NULL);
-	while (s[start + i] != '\0' && i < len)
-	{
-		dest[i] = s[start + i];
+		cur = cur->next;
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (i);
 }

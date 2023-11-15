@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 07:43:24 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/14 09:26:57 by rihoy            ###   ########.fr       */
+/*   Created: 2023/11/15 07:03:28 by rihoy             #+#    #+#             */
+/*   Updated: 2023/11/15 08:00:19 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*dest;
-	size_t	i;
+	t_list	*cur;
+	t_list	*new;
+	t_list	*cell;
 
-	i = 0;
-	if (ft_strlen(s) < start)
-	{
-		dest = malloc(1);
-		if (!dest)
-			return (NULL);
-		dest[0] = '\0';
-		return (dest);
-	}
-	if (ft_strlen(s) - start < len)
-		len = ft_strlen(s) - start;
-	dest = malloc(sizeof(char) * (len + 1));
-	if (!dest)
+	if (!lst || !f || !del)
 		return (NULL);
-	while (s[start + i] != '\0' && i < len)
+	cur = lst;
+	new = NULL;
+	while (cur != NULL)
 	{
-		dest[i] = s[start + i];
-		i++;
+		cell = ft_lstnew((f)(cur->content));
+		if (cell == NULL)
+		{
+			ft_lstclear(&new, del);
+			return (NULL);
+		}
+		ft_lstadd_front(&new, cell);
+		cur = cur->next;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (new);
 }

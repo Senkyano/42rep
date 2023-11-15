@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 07:37:07 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/13 16:39:40 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/11/14 09:20:39 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ char	*ft_itoa(int n)
 	char	*nbr;
 	size_t	i;
 
-    if (n == INT_MIN)
-        return ft_strdup("-2147483648");
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	i = nombredigit(n);
 	nbr = malloc((i + 1) * sizeof(char));
 	if (!nbr)

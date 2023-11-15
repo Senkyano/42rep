@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 07:42:43 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/13 18:41:51 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/11/14 09:26:35 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 	char	*new;
-	
+
 	start = 0;
 	end = ft_strlen(s1) - 1;
 	while (ft_diffletter(s1[start], set) == 1)
