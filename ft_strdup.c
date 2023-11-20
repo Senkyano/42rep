@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:22:27 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/13 15:10:22 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/11/15 15:40:39 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ char	*ft_strdup(const char *src)
 {
 	char	*copy;
 	size_t	len;
-	int		n;
 	size_t	i;
 
 	i = 0;
 	len = ft_strlen(src);
 	copy = malloc((len + 1) * sizeof(char));
-	if (len == 0 && copy == NULL)
+	if (copy == NULL)
 		return (0);
 	while (i < len && src[i] != '\0')
 	{

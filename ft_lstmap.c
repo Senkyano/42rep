@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 07:03:28 by rihoy             #+#    #+#             */
-/*   Updated: 2023/11/15 08:00:19 by rihoy            ###   ########.fr       */
+/*   Updated: 2023/11/15 13:23:04 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new;
 	t_list	*cell;
 
-	if (!lst || !f || !del)
+	new = NULL;
+	if (lst == NULL)
 		return (NULL);
 	cur = lst;
-	new = NULL;
 	while (cur != NULL)
 	{
 		cell = ft_lstnew((f)(cur->content));
@@ -30,7 +30,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 			ft_lstclear(&new, del);
 			return (NULL);
 		}
-		ft_lstadd_front(&new, cell);
+		ft_lstadd_back(&new, cell);
 		cur = cur->next;
 	}
 	return (new);
